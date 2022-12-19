@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+dir="$1"
+if [[ "$dir" == "" ]]; then
+    dir="$(pwd)"
+fi
+
 rest=""
 if [[ "$2" != "" ]]; then
     rest=" | head -n $2"
@@ -10,5 +15,5 @@ set -eu
 # Usage:
 # bigfiles /var/log # Show biggest files/directories in /var/log
 
-cmd="du -a -h --max-depth=1 $1 | sort -h -r $rest"
+cmd="du -a -h --max-depth=1 $dir | sort -h -r $rest"
 sudo sh -c "$cmd"
