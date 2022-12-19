@@ -3,6 +3,8 @@
 Collection of random scripts for things I always need to look up again
 how to do.
 
+[USE AT YOUR OWN RISK.](./LICENSE.md)
+
 ## bgf: Find big files/directories
 
 Find all big files/directories in the current directory:
