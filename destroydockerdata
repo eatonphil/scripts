@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# Usage
+# destroydockerdata # Drops all docker images, volumes, etc.
+
+docker system prune --volumes
