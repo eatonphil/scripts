@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+rest=""
+if [[ "$2" != "" ]]; then
+    rest=" | head -n $2"
+fi
+
+set -eu
+
+# Usage:
+# bigfiles /var/log # Show biggest files/directories in /var/log
+
+cmd="du -a -h --max-depth=1 $1 | sort -h -r $rest"
+sudo sh -c "$cmd"

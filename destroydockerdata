@@ -6,3 +6,4 @@ set -eu
 # destroydockerdata # Drops all docker images, volumes, etc.
 
 docker system prune --volumes
+podman system reset
