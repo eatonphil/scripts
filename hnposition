@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+string="$1"
+if [[ "$string" == "" ]]; then
+    echo "Required string"
+    exit 1
+fi
+
+set -eu
+
+for i in $(seq 1 40); do
+    page="https://news.ycombinator.com/?p=$i"
+
+    echo "Checking $page"
+
+    body="$(curl -s $page)"
+    found="$(echo $body | grep $string || echo "")"
+    if ! [[ "$found" == "" ]]; then
+	echo ""
+	echo "Found '$string' in:"
+	echo ""
+	echo "$found"
+	echo ""
+	echo "At:"
+	echo ""
+	echo "$page"
+	echo ""
+	exit 1
+    fi
+
+    sleep 2s
+done

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eu
+
+PID=$$
+
+if ! [[ "$1" == "" ]]; then
+    PID="$1"
+fi
+
+cat /proc/$PID/status | grep PPid | awk '{print $2}'
