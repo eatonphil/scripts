@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+d="$(mktemp -d)"
+
+PS1_OLD="$PS1"
+pwd="$(pwd)"
+trap "rm -rf $d; export PS1=$PS1_OLD; cd $pwd" EXIT
+
+export PS1='(tmpsh) $ '
+
+cd "$d"
+exec bash
